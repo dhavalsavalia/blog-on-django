@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ STATIC_URL }}img/contact-bg.jpg')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Create New Post</h1>
+              <span class="subheading">Start wirting here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <form method="POST" enctype="multipart/form-data">
+            <div class="control-group">
+                {% csrf_token %}
+                {{form.as_p}}
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+
+            <script>var editor = new MediumEditor('.editable');</script>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+{% endblock %}

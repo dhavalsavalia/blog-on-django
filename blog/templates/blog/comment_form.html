@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ STATIC_URL }}img/contact-bg.jpg')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Add comment?</h1>
+              <span class="subheading">Just add it right here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <form method="POST">
+            <div class="control-group">
+                {% csrf_token %}
+                {{form.as_p}}
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Add Comment</button>
+            </div>
+          </form>
+
+            <script>var editor = new MediumEditor('.editable');</script>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+{% endblock %}

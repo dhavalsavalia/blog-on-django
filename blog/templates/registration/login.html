@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+{#  <div class="jumbotron">#}
+{##}
+{#    <h2>Please Login: </h2>#}
+{#    <h3>(Must be SuperUser, please check admin for issues.)</h3>#}
+{#    {% if form.errors %}#}
+{#        <p>Your username and password didn't match.Please try again!</p>#}
+{#    {% endif %}#}
+{##}
+{#    <form method="POST" action="{% url 'login' %}">#}
+{#    {% csrf_token %}#}
+{#        {{form.as_p}}#}
+{##}
+{#        <input type="submit" class='btn btn-primary' value="Login" />#}
+{#        <input type="hidden" name="next" value="{{ next }}" />#}
+{#    </form>#}
+{#  </div>#}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{% static 'img/contact-bg.jpg' %}')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Welcome, caption!</h1>
+              <span class="subheading">Please login right here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="container" style="margin-top: 50px;">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+                {% if form.errors %}
+                    <p>Your username and password didn't match.Please try again!</p>
+                {% endif %}
+          <form method="POST" action="{% url 'login' %}">
+              {% csrf_token %}
+            <div class="control-group">
+              <ul class="form-group floating-label-form-group">
+                  <p>
+                      <label for="id_username">Username:</label>
+                      <input type="text" class="form-control" placeholder="Username" name="username" autofocus="" maxlength="254" required="" id="id_username">
+                  </p>
+
+              </ul>
+            </div>
+            <div class="control-group">
+              <ul class="form-group floating-label-form-group">
+                <p>
+                      <label for="id_password">Password:</label>
+                      <input type="password" class="form-control" placeholder="Password" name="password" required="" id="id_password">
+                  </p>
+              </ul>
+            </div>
+
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+                <input type="submit" class='btn btn-primary' value="Login" style="margin-left: 45px;"/>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+{% endblock %}
